@@ -8,15 +8,23 @@ function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false); 
-    }, 3000); 
+    // Reduce loading time (1 second delay)
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000); // Set a 1-second loading time
+    return () => clearTimeout(timer); // Clear the timeout on cleanup
   }, []);
+
+  const floatingObjects = Array.from({ length: 180 }).map((_, index) => ({
+    id: index,
+    x: `${Math.random() * 100}vw`, 
+    duration: 13,
+    delay: 1 + Math.random() * 5,
+  }));
 
   if (isLoading) {
     return (
       <div className="loading-screen flex justify-center items-center min-h-screen bg-pink-200">
-      
         <div className="flex items-center space-x-4">
           <motion.img
             src="/cake.gif" 
@@ -31,17 +39,8 @@ function Home() {
     );
   }
 
-
-  const floatingObjects = Array.from({ length: 180 }).map((_, index) => ({
-    id: index,
-    x: `${Math.random() * 100}vw`, 
-    duration: 15,
-    delay: 1 + Math.random() * 5,
-  }));
-
   return (
     <div className="relative flex flex-col justify-center items-center min-h-screen w-screen overflow-hidden bg-pink-200 text-center p-6 bg-[url('/8935717.jpg')] bg-cover bg-center bg-no-repeat">
-      
       {floatingObjects.map((obj) => (
         <motion.img
           key={obj.id}
@@ -58,9 +57,11 @@ function Home() {
             delay: obj.delay, 
             ease: "easeInOut",
           }}
+          loading="lazy" // Lazy loading
         />
       ))}
 
+      {/* Balloons */}
       <motion.img
         src="/b1.png"
         alt="Balloon"
@@ -70,6 +71,7 @@ function Home() {
           y: [-20, 20, -20],
           transition: { duration: 4, repeat: Infinity, ease: "easeInOut" },
         }}
+        loading="lazy"
       />
 
       <motion.img
@@ -81,32 +83,10 @@ function Home() {
           y: [-20, 20, -20],
           transition: { duration: 4, repeat: Infinity, ease: "easeInOut" },
         }}
+        loading="lazy"
       />
 
-      <motion.img
-        src="/b3.png"
-        alt="Balloon"
-        className="absolute w-72 h-72"
-        style={{ right: "10%", top: "15%" }}
-        animate={{
-          y: [-15, 15, -15],
-          x: [-10, 10, -10],
-          transition: { duration: 3, repeat: Infinity, ease: "easeInOut" },
-        }}
-      />
-
-      <motion.img
-        src="/b3.png"
-        alt="Balloon"
-        className="absolute w-52 h-52"
-        style={{ left: "10%", bottom: "15%" }}
-        animate={{
-          y: [-15, 15, -15],
-          x: [-10, 10, -10],
-          transition: { duration: 3, repeat: Infinity, ease: "easeInOut" },
-        }}
-      />
-    
+      {/* Other animations and images */}
       <motion.img
         src="/STAR1.png"
         alt="Star"
@@ -117,38 +97,29 @@ function Home() {
           y: [-10, 10, -10],
           transition: { duration: 4, repeat: Infinity, ease: "easeInOut" },
         }}
-      />
-      <motion.img
-        src="/STRA.png"
-        alt="Star"
-        className="absolute w-36 h-36"
-        style={{ left: "26%", top: "10%" }}
-        animate={{
-          y: [-30, 30, -30],
-          x: [5, -5, 5],
-          transition: { duration: 6, repeat: Infinity, ease: "easeInOut" },
-        }}
+        loading="lazy"
       />
 
-    
       <img
         src="/flag.png"
         alt="Left Image"
         className="absolute -top-0 -left-30 w-154 h-95 transform rotate-300"
+        loading="lazy"
       />
 
       <img
         src="/flag.png"
         alt="Right Image"
         className="absolute -top-5 -right-20 w-154 h-95 transform rotate-5"
+        loading="lazy"
       />
-
 
       <div className="absolute inset-0 flex justify-center items-center">
         <img
           src="/cake.gif"
           alt="Background GIF"
           className="absolute w-[20%] h-[40%] top-[320px] bottom-[50px]"
+          loading="lazy"
         />
       </div>
 
@@ -157,7 +128,6 @@ function Home() {
         <span className="text-pink-500">Akankshya</span> <br />
       </h1>
 
-    
       <div className="absolute bottom-5 z-20">
         <button
           onClick={() => navigate("/i")}
