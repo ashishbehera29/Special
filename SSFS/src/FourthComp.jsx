@@ -12,21 +12,20 @@ const FourthComp = () => {
       transition={{ duration: 0.5 }}
       className="relative flex flex-col justify-center items-center min-h-screen bg-pink-200 p-6 rounded-md shadow-lg overflow-hidden"
     >
-      {/* Top-Left Corner Image */}
+     
       <img
         src="/flag.png"
         alt="Left Image"
         className="absolute -top-25 -left-10 w-140 h-140 transform rotate-305"
       />
 
-      {/* Top-Right Corner Image */}
       <img
         src="/flag.png"
         alt="Right Image"
         className="absolute -top-20 -right-15 w-140 h-140 transform rotate-15"
       />
 
-      {/* Letter Pad */}
+      
       {!showLetter ? (
         <motion.button
           onClick={() => setShowLetter(true)}

@@ -11,9 +11,9 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/second" element={<SecondComponent />} />
-        <Route path="/third" element={<ThirdComponent/>} />
-        <Route path="/fourth" element={<FourthComp/>} />
+        <Route path="/i" element={<SecondComponent />} />
+        <Route path="/love" element={<ThirdComponent/>} />
+        <Route path="/you" element={<FourthComp/>} />
       </Routes>
     </Router>
   );

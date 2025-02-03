@@ -8,19 +8,18 @@ function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulating loading time, this can be replaced by actual loading logic
     setTimeout(() => {
-      setIsLoading(false); // Set loading to false after 3 seconds
-    }, 3000); // Adjust the time as needed
+      setIsLoading(false); 
+    }, 3000); 
   }, []);
 
   if (isLoading) {
     return (
       <div className="loading-screen flex justify-center items-center min-h-screen bg-pink-200">
-        {/* Show a birthday-related loading animation */}
+      
         <div className="flex items-center space-x-4">
           <motion.img
-            src="/cake.gif" // You can add your own cake GIF here
+            src="/cake.gif" 
             alt="Birthday Cake"
             className="w-20 h-20"
             animate={{ rotate: [0, 5, -5, 0] }}
@@ -32,37 +31,36 @@ function Home() {
     );
   }
 
-  // Generate multiple floating objects
+
   const floatingObjects = Array.from({ length: 180 }).map((_, index) => ({
     id: index,
-    x: `${Math.random() * 100}vw`, // Random horizontal positioning
-    duration: 15, // 15 seconds duration for floating from bottom to top
-    delay: 1 + Math.random() * 5, // Random delay to stagger the animations
+    x: `${Math.random() * 100}vw`, 
+    duration: 15,
+    delay: 1 + Math.random() * 5,
   }));
 
   return (
     <div className="relative flex flex-col justify-center items-center min-h-screen w-screen overflow-hidden bg-pink-200 text-center p-6 bg-[url('/8935717.jpg')] bg-cover bg-center bg-no-repeat">
-      {/* Floating Objects */}
+      
       {floatingObjects.map((obj) => (
         <motion.img
           key={obj.id}
           src="/Object.png"
           alt="Floating Object"
           className="absolute w-30 h-40 z-20"
-          style={{ left: obj.x }} // Random horizontal position
-          initial={{ y: "100vh" }} // Start from the bottom of the screen
+          style={{ left: obj.x }} 
+          initial={{ y: "100vh" }} 
           animate={{
-            y: "-100vh", // Move to the top of the screen
+            y: "-100vh", 
           }}
           transition={{
             duration: obj.duration,
-            delay: obj.delay, // Stagger animations with random delay
+            delay: obj.delay, 
             ease: "easeInOut",
           }}
         />
       ))}
 
-      {/* Floating Balloons */}
       <motion.img
         src="/b1.png"
         alt="Balloon"
@@ -132,21 +130,20 @@ function Home() {
         }}
       />
 
-      {/* Image in Top-Left Corner */}
+    
       <img
         src="/flag.png"
         alt="Left Image"
         className="absolute -top-0 -left-30 w-154 h-95 transform rotate-300"
       />
 
-      {/* Image in Top-Right Corner */}
       <img
         src="/flag.png"
         alt="Right Image"
         className="absolute -top-5 -right-20 w-154 h-95 transform rotate-5"
       />
 
-      {/* GIF Background behind the Heading */}
+
       <div className="absolute inset-0 flex justify-center items-center">
         <img
           src="/cake.gif"
@@ -155,16 +152,15 @@ function Home() {
         />
       </div>
 
-      {/* Centered Heading with Custom Font & Shadow */}
       <h1 className="custom-font text-5xl md:text-7xl font-bold text-gray-800 top-[-150px] bottom-[50px] merry-loves w-[90%] md:w-[60%] drop-shadow-xl z-10 relative">
         Happy Birthday <br />
         <span className="text-pink-500">Akankshya</span> <br />
       </h1>
 
-      {/* Next Button */}
+    
       <div className="absolute bottom-5 z-20">
         <button
-          onClick={() => navigate("/second")}
+          onClick={() => navigate("/i")}
           className="bg-pink-500 text-white font-bold text-xl px-7 py-3 rounded-lg shadow-2xl hover:bg-pink-600 transition-all duration-300"
         >
           A Special Message is Waiting For You!!

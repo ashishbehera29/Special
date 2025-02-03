@@ -15,14 +15,13 @@ function SecondComponent() {
       transition={{ duration: 0.5 }}
       className="relative flex flex-col justify-center items-center min-h-screen bg-pink-200 p-6 rounded-md shadow-lg overflow-hidden"
     >
-      {/* Top-Left Corner Image */}
+    
       <img
         src="/flag.png"
         alt="Left Image"
         className="absolute -top-25 -left-10 w-140 h-140 transform rotate-305"
       />
 
-      {/* Top-Right Corner Image */}
       <img
         src="/flag.png"
         alt="Right Image"
@@ -30,7 +29,7 @@ function SecondComponent() {
       />
 
 
-      {/* First Image */}
+    
       <motion.img
         src="/Layer_1.png"
         alt="First Image"
@@ -39,7 +38,6 @@ function SecondComponent() {
         transition={{ duration: 0.5 }}
       />
 
-      {/* Second Image (Appears on Click) */}
       {showSecondImage && (
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -56,7 +54,7 @@ function SecondComponent() {
         </motion.div>
       )}
 
-      {/* Toggle Second Image */}
+     
       {!showSurpriseButton ? (
         <button
           onClick={() => {
@@ -73,10 +71,10 @@ function SecondComponent() {
         </p>
       )}
 
-      {/* Navigate to Third Component */}
+      
       {showSurpriseButton && (
         <button
-          onClick={() => navigate("/third")}
+          onClick={() => navigate("/love")}
           className="mt-4 px-6 py-3 text-white bg-pink-500 rounded-md shadow-lg z-20"
         >
             Message waiting!
