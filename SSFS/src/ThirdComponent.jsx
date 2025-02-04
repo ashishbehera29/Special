@@ -74,6 +74,11 @@ const ThirdComponent = () => {
         No
       </motion.button>
 
+      <audio autoPlay loop controls={false}>
+        <source src="/song.mp3" type="audio/mpeg" />
+        Your browser does not support the audio tag.
+      </audio>
+
       {showYesButton && (
         <motion.button
           onClick={() => navigate("/you")} 

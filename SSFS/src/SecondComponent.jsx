@@ -8,7 +8,11 @@ function SecondComponent() {
   const [showSurpriseButton, setShowSurpriseButton] = useState(false);
 
   return (
+
+    
     <motion.div
+
+    
       initial={{ opacity: 0, x: 100 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -100 }}
@@ -53,7 +57,10 @@ function SecondComponent() {
           />
         </motion.div>
       )}
-
+    <audio autoPlay loop controls={false}>
+        <source src="/song.mp3" type="audio/mpeg" />
+        Your browser does not support the audio tag.
+      </audio>
      
       {!showSurpriseButton ? (
         <button

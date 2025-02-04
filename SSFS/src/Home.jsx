@@ -8,16 +8,15 @@ function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Reduce loading time (1 second delay)
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1000); // Set a 1-second loading time
-    return () => clearTimeout(timer); // Clear the timeout on cleanup
+    }, 1000); 
+    return () => clearTimeout(timer);
   }, []);
 
   const floatingObjects = Array.from({ length: 180 }).map((_, index) => ({
     id: index,
-    x: `${Math.random() * 100}vw`, 
+    x: `${Math.random() * 100}vw`,
     duration: 13,
     delay: 1 + Math.random() * 5,
   }));
@@ -27,7 +26,7 @@ function Home() {
       <div className="loading-screen flex justify-center items-center min-h-screen bg-pink-200">
         <div className="flex items-center space-x-4">
           <motion.img
-            src="/cake.gif" 
+            src="/cake.gif"
             alt="Birthday Cake"
             className="w-20 h-20"
             animate={{ rotate: [0, 5, -5, 0] }}
@@ -41,27 +40,30 @@ function Home() {
 
   return (
     <div className="relative flex flex-col justify-center items-center min-h-screen w-screen overflow-hidden bg-pink-200 text-center p-6 bg-[url('/8935717.jpg')] bg-cover bg-center bg-no-repeat">
+      {/* Background Music */}
+      <audio autoPlay loop controls={false}>
+        <source src="/song.mp3" type="audio/mpeg" />
+        Your browser does not support the audio tag.
+      </audio>
+
       {floatingObjects.map((obj) => (
         <motion.img
           key={obj.id}
           src="/Object.png"
           alt="Floating Object"
           className="absolute w-30 h-40 z-20"
-          style={{ left: obj.x }} 
-          initial={{ y: "100vh" }} 
-          animate={{
-            y: "-100vh", 
-          }}
+          style={{ left: obj.x }}
+          initial={{ y: "100vh" }}
+          animate={{ y: "-100vh" }}
           transition={{
             duration: obj.duration,
-            delay: obj.delay, 
+            delay: obj.delay,
             ease: "easeInOut",
           }}
-          loading="lazy" // Lazy loading
+          loading="lazy"
         />
       ))}
 
-      {/* Balloons */}
       <motion.img
         src="/b1.png"
         alt="Balloon"
@@ -86,7 +88,6 @@ function Home() {
         loading="lazy"
       />
 
-      {/* Other animations and images */}
       <motion.img
         src="/STAR1.png"
         alt="Star"
@@ -141,3 +142,4 @@ function Home() {
 }
 
 export default Home;
+

@@ -24,7 +24,10 @@ const FourthComp = () => {
         alt="Right Image"
         className="absolute -top-20 -right-15 w-140 h-140 transform rotate-15"
       />
-
+    <audio autoPlay loop controls={false}>
+        <source src="/song.mp3" type="audio/mpeg" />
+        Your browser does not support the audio tag.
+      </audio>
       
       {!showLetter ? (
         <motion.button
